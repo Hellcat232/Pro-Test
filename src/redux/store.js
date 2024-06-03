@@ -10,14 +10,16 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+// import sessionStorage from "redux-persist/lib/storage/session";
+
 import { authReducer } from "./auth/slice";
 import { testReducer } from "./test/slice";
 import { userReducer } from "./user/slice";
 
 const persistConfig = {
   key: "auth",
-  storage,
-  whitelist: ["accessToken", "refreshToken"],
+  storage: storage,
+  whitelist: ["accessToken", "refreshToken", "sid"],
 };
 
 export const store = configureStore({

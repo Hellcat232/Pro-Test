@@ -43,7 +43,7 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
         state.user = null;
       })
-      .addCase(login.pending, (state) => {
+      .addCase(login.pending, (state, action) => {
         state.accessToken = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -92,17 +92,17 @@ export const authSlice = createSlice({
         state.user = null;
       })
       .addCase(refresh.pending, (state, action) => {
-        // state.accessToken = null;
-        // state.refreshToken = null;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = action.payload.refreshToken;
         // state.sid = null;
         state.isLoggedIn = false;
         state.isRefreshing = true;
         state.user = null;
       })
       .addCase(refresh.fulfilled, (state, action) => {
-        // state.accessToken = null;
-        // state.refreshToken = null;
-        // state.sid = null;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.sid = action.payload.sid;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.user = action.payload.userData;
