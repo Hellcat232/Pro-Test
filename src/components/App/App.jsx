@@ -10,7 +10,7 @@ import MainPage from "../../pages/MainPage";
 
 const App = () => {
   const dispatch = useDispatch();
-  const sid = useSelector(selectSid);
+
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {

@@ -5,13 +5,13 @@ import { selectSid } from "./selectors";
 
 axios.defaults.baseURL = "https://protest-backend.goit.global/";
 
-const setAccessToken = (accessToken) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-};
+// const setAccessToken = (accessToken) => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+// };
 
-const setRefreshToken = (refreshToken) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
-};
+// const setRefreshToken = (refreshToken) => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
+// };
 
 // const setSessionID = (sessionID) => {
 //   axios.defaults.data = `${sessionID}`;
@@ -38,8 +38,8 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
     const { data } = await axios.post("/auth/login", text);
     console.log(data);
-    setAccessToken(data.accessToken);
-    setRefreshToken(data.refreshToken);
+    // setAccessToken(data.accessToken);
+    // setRefreshToken(data.refreshToken);
     // setSessionID(data.sid);
     return data;
   } catch (error) {
@@ -67,16 +67,20 @@ export const refresh = createAsyncThunk(
       const persistedSessionID = {
         sid: sid.auth.sid,
       };
-      console.log(persistedSessionID);
 
-      if (persistedSessionID === null) {
+      if (sid === null) {
         return thunkAPI.rejectWithValue("User not authorized");
       }
 
-      const response = await axios.post("/auth/refresh", persistedSessionID);
+      const { data } = await axios.post("/auth/refresh", persistedSessionID, {
+        headers: { Authorization: sid.auth.refreshToken },
+      });
 
-      console.log(response.data);
-      return response.data;
+      // setAccessToken(data.newAccessToken);
+      // setRefreshToken(data.newRefreshToken);
+
+      console.log(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
