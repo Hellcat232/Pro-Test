@@ -1,0 +1,21 @@
+.main {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  background-color: #f5f6fb;
+}
+
+@media (min-width: 768px) {
+  .main {
+    width: 768px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main {
+    width: 1280px;
+  }
+}

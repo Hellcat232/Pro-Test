@@ -3,28 +3,30 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSid } from "./selectors";
 
-axios.defaults.baseURL = "https://protest-backend.goit.global/";
+axios.defaults.baseURL = "https://protest-backend.goit.global";
 
-// const setAccessToken = (accessToken) => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-// };
+const setAccessToken = (accessToken) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+};
 
-// const setRefreshToken = (refreshToken) => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
-// };
+const setRefreshToken = (refreshToken) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
+};
 
-// const setSessionID = (sessionID) => {
-//   axios.defaults.data = `${sessionID}`;
-// };
-// const clearAuthToken = () => {
-//   axios.defaults.headers.common.Authorization = "";
-// };
+const setSessionID = (sessionID) => {
+  axios.defaults.data = `${sessionID}`;
+};
+const clearAuthToken = () => {
+  axios.defaults.headers.common.Authorization = "";
+};
 
 export const register = createAsyncThunk(
   "auth/register",
   async (text, thunkAPI) => {
     try {
-      const response = await axios.post("/auth/register", text);
+      const response = await axios.post("/auth/register", text, {
+        headers: "Content-Type: application/json",
+      });
 
       console.log(response.data);
       return response.data;
@@ -36,11 +38,13 @@ export const register = createAsyncThunk(
 
 export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
-    const { data } = await axios.post("/auth/login", text);
+    const { data } = await axios.post("/auth/login", text, {
+      headers: "Content-Type: application/json",
+    });
     console.log(data);
-    // setAccessToken(data.accessToken);
-    // setRefreshToken(data.refreshToken);
-    // setSessionID(data.sid);
+    setAccessToken(data.accessToken);
+    setRefreshToken(data.refreshToken);
+    setSessionID(data.sid);
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -76,8 +80,8 @@ export const refresh = createAsyncThunk(
         headers: { Authorization: sid.auth.refreshToken },
       });
 
-      // setAccessToken(data.newAccessToken);
-      // setRefreshToken(data.newRefreshToken);
+      setAccessToken(data.newAccessToken);
+      setRefreshToken(data.newRefreshToken);
 
       console.log(data);
       return data;
