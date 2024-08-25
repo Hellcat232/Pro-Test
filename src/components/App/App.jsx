@@ -1,8 +1,11 @@
 import css from "./App.module.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refresh } from "../../redux/auth/operations";
-import { selectIsRefreshing, selectSid } from "../../redux/auth/selectors";
+import {
+  selectIsRefreshing,
+  selectIsLoggedIn,
+} from "../../redux/auth/selectors";
 import { useEffect } from "react";
 import Layout from "../Layout/Layout";
 import Navigation from "../Navigation/Navigation";
@@ -12,22 +15,33 @@ import MainPage from "../../pages/MainPage/MainPage";
 
 const App = () => {
   const dispatch = useDispatch();
+  const isLogged = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  // const isRefreshing = useSelector(selectIsRefreshing);
-
-  // useEffect(() => {
-  //   dispatch(refresh());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
 
   return (
     <>
       <Navigation />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-        </Routes>
-      </Layout>
+
+      {isRefreshing ? (
+        <p>Refresh page</p>
+      ) : (
+        <Layout>
+          <Routes>
+            <Route
+              path="/auth"
+              element={!isLogged ? <AuthPage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/"
+              element={isLogged ? <MainPage /> : <Navigate to="/auth" />}
+            />
+          </Routes>
+        </Layout>
+      )}
       <Footer />
     </>
   );

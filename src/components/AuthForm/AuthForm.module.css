@@ -157,3 +157,9 @@
     width: 210px;
   }
 }
+
+@media (min-width: 1280px) {
+  .auth-form {
+    margin: 168px 123px 98px 0;
+  }
+}

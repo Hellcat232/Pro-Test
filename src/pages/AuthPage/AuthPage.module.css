@@ -68,3 +68,28 @@
     display: block;
   }
 }
+
+@media (min-width: 1280px) {
+  .title-div {
+    margin: 238px 112px 308px 124px;
+  }
+
+  .auth-title {
+    font-size: 34px;
+    width: 153px;
+  }
+
+  .description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 200%;
+    width: 420px;
+    height: 187px;
+  }
+
+  .description-span {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 200%;
+  }
+}

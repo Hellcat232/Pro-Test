@@ -36,8 +36,24 @@
     display: none;
   }
 
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .copyright {
     width: 768px;
     font-size: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
   }
 }
