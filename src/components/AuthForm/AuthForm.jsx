@@ -1,7 +1,28 @@
 import css from "./AuthForm.module.css";
 import icons from "../../images/symbol-defs.svg";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register, login } from "../../redux/auth/operations";
 
 const AuthForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password }));
+    setEmail("");
+    setPassword("");
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    dispatch(register({ email, password }));
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <form className={css["auth-form"]}>
       <div className={css.description}>
@@ -22,15 +43,31 @@ const AuthForm = () => {
       </div>
 
       <div className={css["inputs-div"]}>
-        <input type="email" placeholder="E-mail" className={css.inputs} />
-        <input type="password" placeholder="Password" className={css.inputs} />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail"
+          className={css.inputs}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className={css.inputs}
+        />
       </div>
 
       <div className={css["btns-div"]}>
-        <button type="submit" className={css["sign-in"]}>
+        <button type="submit" onClick={handleLogin} className={css["sign-in"]}>
           Sign In
         </button>
-        <button type="submit" className={css["sign-up"]}>
+        <button
+          type="submit"
+          onClick={handleRegister}
+          className={css["sign-up"]}
+        >
           Sign Up
         </button>
       </div>
