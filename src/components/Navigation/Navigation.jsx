@@ -3,21 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/operations";
 import { RxHamburgerMenu } from "react-icons/rx";
 import icon from "../../images/symbol-defs.svg";
-import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { selectFirstSpell, selectUser } from "../../redux/user/selectors";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const isLogged = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUser);
+  const firstSpell = useSelector(selectFirstSpell);
   const dispatch = useDispatch();
-  const navigate = useDispatch();
-
-  console.log(userName);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
 
-    navigate("/");
+    navigate("/auth");
   };
 
   return (
@@ -48,15 +48,11 @@ const Navigation = () => {
           <ul className={css["nav-right-side"]}>
             {isLogged && (
               <li className={css.elipse}>
-                <span style={{ verticalAlign: "middle" }}>n</span>
+                <span style={{ verticalAlign: "middle" }}>{firstSpell}</span>
               </li>
             )}
 
-            {isLogged && (
-              <li className={css.name}>
-                <p>{userName.email}</p>
-              </li>
-            )}
+            {isLogged && <li className={css.name}>{<p>{userName}</p>}</li>}
             {isLogged && (
               <li>
                 <svg width="2" height="68" className={css.line}>

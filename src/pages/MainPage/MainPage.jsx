@@ -1,7 +1,16 @@
 import css from "./MainPage.module.css";
 import icon from "../../images/symbol-defs.svg";
+import { user } from "../../redux/user/operations";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const MainPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(user());
+  }, [dispatch]);
+
   return (
     <div className={css["main-page"]}>
       <p className={css["main-text"]}>

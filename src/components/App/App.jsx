@@ -1,7 +1,7 @@
 import css from "./App.module.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { refresh } from "../../redux/auth/operations";
+// import { refresh } from "../../redux/auth/operations";
 import {
   selectIsRefreshing,
   selectIsLoggedIn,
@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import Layout from "../Layout/Layout";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
-
+import { refresh } from "../../redux/auth/operations";
 import AuthPage from "../../pages/AuthPage/AuthPage";
 import MainPage from "../../pages/MainPage/MainPage";
 import TestPage from "../../pages/TestPage/TestPage";
@@ -44,10 +44,22 @@ const App = () => {
               path="/"
               element={isLogged ? <MainPage /> : <Navigate to="/auth" />}
             />
-            <Route path="/usefull-info" element={<UseFullInfoPage />} />
-            <Route path="/test" element={<TestPage />} />
-            <Route path="/results" element={<ResultsPage />} />
-            <Route path="/contacts" element={<ContactsPage />} />
+            <Route
+              path="/usefull-info"
+              element={isLogged ? <UseFullInfoPage /> : <Navigate to="/auth" />}
+            />
+            <Route
+              path="/test"
+              element={isLogged ? <TestPage /> : <Navigate to="/auth" />}
+            />
+            <Route
+              path="/results"
+              element={isLogged ? <ResultsPage /> : <Navigate to="/auth" />}
+            />
+            <Route
+              path="/contacts"
+              element={isLogged ? <ContactsPage /> : <Navigate to="/auth" />}
+            />
           </Routes>
         </Layout>
       )}
