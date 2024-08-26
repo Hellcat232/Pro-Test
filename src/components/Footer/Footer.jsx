@@ -13,7 +13,13 @@ const Footer = () => {
               </svg>
             </span>
             2024 | All Rights Reserved | Developed with
-            <span style={{ verticalAlign: "middle" }}>
+            <span
+              style={{
+                verticalAlign: "middle",
+                marginLeft: "3px",
+                marginRight: "3px",
+              }}
+            >
               <svg width="16" height="16">
                 <use href={`${icons}#icon-favorite-heart-button`}></use>
               </svg>

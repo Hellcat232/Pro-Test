@@ -4,6 +4,11 @@
   height: 56px;
   padding: 0 20px;
   display: flex;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .copyright {
@@ -50,10 +55,5 @@
 
 @media (min-width: 1280px) {
   .footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
   }
 }

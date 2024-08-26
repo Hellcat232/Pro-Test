@@ -10,7 +10,7 @@ import {
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: { email: null, password: null },
+    user: { email: null, id: null },
     sid: null,
     accessToken: null,
     refreshToken: null,
@@ -68,12 +68,12 @@ export const authSlice = createSlice({
         state.user = null;
       })
       .addCase(logout.pending, (state, action) => {
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
-        state.sid = action.payload.sid;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = null;
+        // state.sid = null;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        state.user = action.payload.userData;
+        // state.user = action.payload.userData;
       })
       .addCase(logout.fulfilled, (state) => {
         state.accessToken = null;
@@ -97,7 +97,7 @@ export const authSlice = createSlice({
         // state.sid = null;
         state.isLoggedIn = false;
         state.isRefreshing = true;
-        state.user = null;
+        // state.user = action.payload.userData;
       })
       .addCase(refresh.fulfilled, (state, action) => {
         state.accessToken = action.payload.newAccessToken;
@@ -105,7 +105,7 @@ export const authSlice = createSlice({
         state.sid = action.payload.newSid;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        state.user = action.payload.userData;
+        // state.user = action.payload.userData;
       })
       .addCase(refresh.rejected, (state, action) => {
         state.isRefreshing = false;

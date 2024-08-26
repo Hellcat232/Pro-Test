@@ -10,8 +10,13 @@ import { useEffect } from "react";
 import Layout from "../Layout/Layout";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
+
 import AuthPage from "../../pages/AuthPage/AuthPage";
 import MainPage from "../../pages/MainPage/MainPage";
+import TestPage from "../../pages/TestPage/TestPage";
+import ResultsPage from "../../pages/ResultsPage/ResultsPage";
+import UseFullInfoPage from "../../pages/UseFullInfoPage/UsefulInfoPage";
+import ContactsPage from "../../pages/ContactsPage/ContactsPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,6 +44,10 @@ const App = () => {
               path="/"
               element={isLogged ? <MainPage /> : <Navigate to="/auth" />}
             />
+            <Route path="/usefull-info" element={<UseFullInfoPage />} />
+            <Route path="/test" element={<TestPage />} />
+            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
           </Routes>
         </Layout>
       )}

@@ -3,10 +3,49 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 320px;
+  /* width: 320px; */
   height: 68px;
   border: 1px solid #e2e3e5;
-  padding: 20px;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f5f6fb;
+}
+
+.elipse {
+  border: none;
+  text-align: center;
+  /* text-align: justify; */
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e2e3e5;
+}
+
+.home-material {
+  display: none;
+}
+
+.contacts {
+  display: none;
+}
+
+.nav-right-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name {
+  display: none;
+}
+
+.sign-out {
+  display: none;
 }
 
 .logo {
@@ -31,19 +70,50 @@
   background-color: transparent;
 }
 
-.contacts {
-  display: none;
-}
-
 @media (min-width: 768px) {
   .header {
-    width: 768px;
+    width: 100%;
     height: 68px;
-    padding: 0 32px;
+    padding: 0 20px;
+    justify-content: space-between;
   }
 
   .line {
-    display: none;
+    /* display: none; */
+    width: 2px;
+    height: 68px;
+  }
+
+  .name {
+    display: block;
+  }
+
+  .home-material {
+    display: flex;
+  }
+
+  .sign-out {
+    display: block;
+  }
+
+  .nav-list {
+    gap: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav {
+    display: flex;
+    /* width: 100%; */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-right-side {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
   .logo {
@@ -64,19 +134,34 @@
     letter-spacing: 0.02em;
     text-align: right;
     color: #000;
-    width: 85px;
+  }
+
+  .home-material {
+    display: block;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #000;
   }
 }
 
 @media (min-width: 1280px) {
   .header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
+    display: flex;
+
     height: 68px;
     border: 1px solid #e2e3e5;
     padding: 0 16px;
+  }
+
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .nav-list {
+    gap: 80px;
   }
 }

@@ -1,0 +1,146 @@
+.main-page {
+  margin: 100px 0;
+  background: #f5f6fb;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-text {
+  margin: 0 0 32px 0;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 167%;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #000;
+}
+
+.br-tablet {
+  display: none;
+}
+
+.line {
+  stroke: #00122f;
+  width: 130px;
+  height: 2px;
+}
+
+.linus-torvalds {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #000;
+  margin-top: 12px;
+}
+
+.hacker {
+  margin-bottom: 40px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #555;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.training-btn {
+  border: none;
+  width: 280px;
+  height: 212px;
+  background: #02172a;
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 15px 0 rgba(18, 29, 46, 0.15);
+}
+
+.theory-btn {
+  border: none;
+  width: 280px;
+  height: 212px;
+  background: #ff6b01;
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 15px 0 rgba(18, 29, 46, 0.15);
+}
+
+@media (min-width: 768px) {
+  .main-page {
+    margin: 150px 0 180px 0;
+  }
+
+  .main-text {
+    margin: 0 0 59px 0;
+    font-size: 22px;
+    line-height: 136%;
+  }
+
+  .br-tablet {
+    display: block;
+  }
+
+  .line {
+    width: 320px;
+  }
+
+  .linus-torvalds {
+    font-size: 18px;
+    line-height: unset;
+  }
+
+  .hacker {
+    font-size: 14px;
+    line-height: unset;
+    margin-bottom: 60px;
+  }
+
+  .list {
+    gap: 30px;
+  }
+
+  .training-btn {
+    font-size: 32px;
+    width: 480px;
+  }
+
+  .theory-btn {
+    font-size: 32px;
+    width: 480px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-page {
+    margin: 190px 0;
+  }
+
+  .hacker {
+    font-weight: 400;
+  }
+
+  .list {
+    gap: 32px;
+    flex-direction: row;
+  }
+}

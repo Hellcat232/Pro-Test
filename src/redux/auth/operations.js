@@ -41,10 +41,11 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
     const { data } = await axios.post("/auth/login", text, {
       headers: "Content-Type: application/json",
     });
-    console.log(data);
+
     setAccessToken(data.accessToken);
     setRefreshToken(data.refreshToken);
     setSessionID(data.sid);
+
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -53,10 +54,21 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    const response = await axios.post("/auth/logout");
-    console.log(response.data);
+    const accessToken = thunkAPI.getState();
 
-    return response.data;
+    // const persistedAccessToken = {
+    //   accessToken: accessToken.auth.accessToken,
+    // };
+
+    // if (accessToken === null) {
+    //   return thunkAPI.rejectWithValue("User not authorized");
+    // }
+
+    await axios.post("/auth/logout", _, {
+      headers: { Authorization: accessToken.auth.accessToken },
+    });
+
+    clearAuthToken();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

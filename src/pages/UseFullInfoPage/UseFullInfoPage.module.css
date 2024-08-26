@@ -1,0 +1,11 @@
+.image {
+  width: 1440px;
+  height: 100vh;
+
+  position: fixed;
+  top: 70px;
+
+  background-image: url("/src/images/pic1.png");
+  background-size: cover;
+  background-position: 100%;
+}
