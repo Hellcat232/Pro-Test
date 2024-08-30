@@ -3,9 +3,15 @@ import icon from "../../images/symbol-defs.svg";
 import { user } from "../../redux/user/operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleOpenTest = () => {
+    navigate("/test");
+  };
 
   useEffect(() => {
     dispatch(user());
@@ -29,13 +35,13 @@ const MainPage = () => {
 
       <ul className={css.list}>
         <li>
-          <button className={css["training-btn"]}>
+          <button className={css["training-btn"]} onClick={handleOpenTest}>
             QA technical
             <br /> training
           </button>
         </li>
         <li>
-          <button className={css["theory-btn"]}>
+          <button className={css["theory-btn"]} onClick={handleOpenTest}>
             Testing
             <br /> theory
           </button>

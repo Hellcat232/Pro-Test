@@ -6,6 +6,7 @@ import {
   selectIsRefreshing,
   selectIsLoggedIn,
 } from "../../redux/auth/selectors";
+import Modal from "react-modal";
 import { useEffect } from "react";
 import Layout from "../Layout/Layout";
 import Navigation from "../Navigation/Navigation";
@@ -17,6 +18,8 @@ import TestPage from "../../pages/TestPage/TestPage";
 import ResultsPage from "../../pages/ResultsPage/ResultsPage";
 import UseFullInfoPage from "../../pages/UseFullInfoPage/UsefulInfoPage";
 import ContactsPage from "../../pages/ContactsPage/ContactsPage";
+
+Modal.setAppElement("#root");
 
 const App = () => {
   const dispatch = useDispatch();
@@ -56,10 +59,11 @@ const App = () => {
               path="/results"
               element={isLogged ? <ResultsPage /> : <Navigate to="/auth" />}
             />
-            <Route
+            {/* <Route
               path="/contacts"
               element={isLogged ? <ContactsPage /> : <Navigate to="/auth" />}
-            />
+            /> */}
+            <Route path="/contacts" element={<ContactsPage />} />
           </Routes>
         </Layout>
       )}
