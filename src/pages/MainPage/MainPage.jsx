@@ -4,12 +4,19 @@ import { user } from "../../redux/user/operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { techTest, theoryTest } from "../../redux/test/operation";
 
 const MainPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleOpenTest = () => {
+  const handleOpenTechTest = () => {
+    dispatch(techTest());
+    navigate("/test");
+  };
+
+  const handleOpenTheoryTest = () => {
+    dispatch(theoryTest());
     navigate("/test");
   };
 
@@ -35,13 +42,13 @@ const MainPage = () => {
 
       <ul className={css.list}>
         <li>
-          <button className={css["training-btn"]} onClick={handleOpenTest}>
+          <button className={css["training-btn"]} onClick={handleOpenTechTest}>
             QA technical
             <br /> training
           </button>
         </li>
         <li>
-          <button className={css["theory-btn"]} onClick={handleOpenTest}>
+          <button className={css["theory-btn"]} onClick={handleOpenTheoryTest}>
             Testing
             <br /> theory
           </button>

@@ -3,7 +3,11 @@ import axios from "axios";
 
 export const techTest = createAsyncThunk("tech/test", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("/qa-test/tech");
+    const accessToken = thunkAPI.getState();
+
+    const response = await axios.get("/qa-test/tech", {
+      headers: { Authorization: accessToken.auth.accessToken },
+    });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -15,7 +19,11 @@ export const theoryTest = createAsyncThunk(
   "theory/test",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/qa-test/theory");
+      const accessToken = thunkAPI.getState();
+
+      const response = await axios.get("/qa-test/theory", {
+        headers: { Authorization: accessToken.auth.accessToken },
+      });
       console.log(response.data);
       return response.data;
     } catch (error) {
