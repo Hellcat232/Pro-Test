@@ -6,8 +6,7 @@ export const testSlice = createSlice({
   initialState: {
     test: {},
     title: "theory" | "tech",
-    techResults: {},
-    theoryResults: {},
+    results: {},
   },
   extraReducers: (builder) => {
     builder
@@ -34,6 +33,24 @@ export const testSlice = createSlice({
       .addCase(theoryTest.rejected, (state, action) => {
         // state.theoryTest = {};
         state.test = {};
+      })
+      .addCase(techResults.pending, (state, action) => {
+        state.results = {};
+      })
+      .addCase(techResults.fulfilled, (state, action) => {
+        state.results = action.payload;
+      })
+      .addCase(techResults.rejected, (state, action) => {
+        state.results = {};
+      })
+      .addCase(theoryResults.pending, (state, action) => {
+        state.results = {};
+      })
+      .addCase(theoryResults.fulfilled, (state, action) => {
+        state.results = action.payload;
+      })
+      .addCase(theoryResults.rejected, (state, action) => {
+        state.results = {};
       });
   },
 });

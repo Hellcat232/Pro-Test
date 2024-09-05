@@ -8,9 +8,13 @@ import { selectTechTest, selectTitle } from "../../redux/test/selectors";
 
 const TestPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const tech = useSelector(selectTechTest);
   const title = useSelector(selectTitle);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswer] = useState({});
+
+  console.log(answers, "ANSWER ARRAY");
 
   const handleLoadNext = () => {
     setCurrentIndex((prevIndex) =>
@@ -22,15 +26,42 @@ const TestPage = () => {
     setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
   };
 
-  const handleSubmitForm = () => {
-    navigate("/");
+  const handleChange = (questionId, answer) => {
+    setAnswer((prev) => ({
+      ...prev,
+      [questionId]: answer, // Сохраняем ответ для каждого questionId
+    }));
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      answers: Object.keys(answers).map((questionId) => ({
+        questionId: Number(questionId),
+        answer: answers[questionId],
+      })),
+    };
+
+    console.log(payload.answers.length);
+
+    if (payload.answers.length < 12) return navigate("/");
+
+    const techResult = payload;
+    const thoeryResult = payload;
+
+    dispatch(techResults(techResult));
+
+    dispatch(theoryResults(thoeryResult));
+
+    navigate("/results");
   };
 
   const isTechLoaded = tech && tech.length > 0 && tech[currentIndex];
 
   return (
     <>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSubmitForm}>
         <div className={css["title-and-finish"]}>
           {title === "theory" && (
             <b className={css.title}>
@@ -43,21 +74,19 @@ const TestPage = () => {
               <br /> training]
             </b>
           )}
-          <button
-            type="submit"
-            onSubmit={handleSubmitForm}
-            className={css["finish-btn"]}
-          >
+          <button type="submit" className={css["finish-btn"]}>
             Finish test
           </button>
         </div>
 
         {isTechLoaded ? (
           <TestBox
+            handleChange={handleChange}
             question={tech[currentIndex].question}
             questionId={tech[currentIndex].questionId}
             answers={tech[currentIndex].answers}
             index={currentIndex}
+            selectedAnswer={answers[tech[currentIndex].questionId] || ""}
           />
         ) : (
           <p>Loading...</p>

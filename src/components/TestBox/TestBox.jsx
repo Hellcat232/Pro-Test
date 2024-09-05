@@ -2,7 +2,14 @@ import css from "./TestBox.module.css";
 import { useSelector } from "react-redux";
 import { selectTechTest } from "../../redux/test/selectors";
 
-const TestBox = ({ question, questionId, answers, index }) => {
+const TestBox = ({
+  question,
+  questionId,
+  answers,
+  index,
+  handleChange,
+  selectedAnswer,
+}) => {
   const tech = useSelector(selectTechTest);
 
   return (
@@ -18,7 +25,13 @@ const TestBox = ({ question, questionId, answers, index }) => {
         <ul className={css.ul}>
           {answers.map((answer, idx) => (
             <li key={idx} className={css.li}>
-              <input type="radio" name={`form-${questionId}`} value={answer} />
+              <input
+                type="radio"
+                name={`form-${questionId}`}
+                value={answer}
+                checked={selectedAnswer === answer}
+                onChange={(e) => handleChange(questionId, e.target.value)}
+              />
               <label htmlFor="" className={css.label}>
                 {typeof answer === "string" ? answer : JSON.stringify(answer)}
               </label>

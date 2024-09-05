@@ -95,7 +95,7 @@ export const refresh = createAsyncThunk(
       setAccessToken(data.newAccessToken);
       setRefreshToken(data.newRefreshToken);
 
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

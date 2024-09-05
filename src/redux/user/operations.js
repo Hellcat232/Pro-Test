@@ -9,7 +9,7 @@ export const user = createAsyncThunk("get/user", async (_, thunkAPI) => {
     const response = await axios.get("/user", {
       headers: { Authorization: accessToken },
     });
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
