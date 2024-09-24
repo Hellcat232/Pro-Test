@@ -34,3 +34,73 @@
   flex-direction: column;
   align-items: center;
 }
+
+.btns {
+  display: flex;
+  width: 280px;
+  justify-content: space-between;
+  margin: 20px 0 70px 0;
+}
+
+.prev-btn {
+  width: 55px;
+  height: 34px;
+  background: #ff6b09;
+  border: none;
+}
+
+.next-btn {
+  width: 55px;
+  height: 34px;
+  background: #fff;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .title-and-finish {
+    width: 704px;
+    justify-content: space-between;
+  }
+
+  .btns {
+    width: 704px;
+    justify-content: space-between;
+    margin: 20px 0 0 0;
+  }
+
+  .title {
+    width: 210px;
+    height: 54px;
+    font-size: 22px;
+  }
+
+  .finish-btn {
+    width: 181px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .prev-btn {
+    width: 210px;
+    height: 34px;
+  }
+
+  .next-btn {
+    width: 210px;
+    height: 34px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .title-and-finish {
+    width: 821px;
+  }
+
+  .btns {
+    width: 821px;
+  }
+
+  .title {
+    font-weight: 500;
+  }
+}

@@ -7,7 +7,7 @@ import icon from "../../images/symbol-defs.svg";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectFirstSpell, selectUser } from "../../redux/user/selectors";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 
 const Navigation = () => {
@@ -18,6 +18,22 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   const [modalOpen, setOpenModal] = useState(false);
+  const [isAuth, setAuth] = useState(false);
+
+  // use useEffect to change style body if open/close modal window
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden"; // Hidden scrollY
+    } else {
+      document.body.style.overflow = ""; // Return scrollY
+    }
+
+    // clear style (if window is close)
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen]);
+  //==========================================================================
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -31,6 +47,14 @@ const Navigation = () => {
     dispatch(logout());
 
     navigate("/auth");
+  };
+
+  const handleContacts = () => {
+    setAuth(true);
+  };
+
+  const handleLogin = () => {
+    setAuth(false);
   };
 
   return (
@@ -56,7 +80,13 @@ const Navigation = () => {
             )}
 
             <li className={css["contacts"]}>
-              <Link to="/contacts">Contacts</Link>
+              {/* <Link to="/auth"  onClick={handleLogin}>
+                  Login
+                </Link> */}
+
+              <Link to="/contacts" onClick={handleContacts}>
+                Contacts
+              </Link>
             </li>
 
             <ul className={css["nav-right-side"]}>

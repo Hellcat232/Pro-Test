@@ -8,7 +8,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 const customStyles = {
   content: {
     position: "absolute",
-    overflowY: "auto",
+    overflowY: "hidden",
     top: "50%",
     left: "50%",
     right: "auto",

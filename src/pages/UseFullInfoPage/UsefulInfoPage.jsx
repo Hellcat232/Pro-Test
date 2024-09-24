@@ -1,6 +1,15 @@
 import css from "./UseFullInfoPage.module.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { user } from "../../redux/user/operations";
 
 const UseFullInfo = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(user());
+  });
+
   return (
     <div className={css["background-image"]}>
       <div className={css.lists}>
@@ -10,12 +19,18 @@ const UseFullInfo = () => {
             <br className={css.br} /> literature
           </h3>
           <ul className={css["use-lit"]}>
-            <li>1. Testing dot.com Savin.</li>
             <li>
-              2. A mental hospital in the hands of
-              <br /> patients.
+              <p className={css.text}>1. Testing dot.com Savin.</p>
             </li>
-            <li>3. Scrum. J. Sutherland.</li>
+            <li>
+              <p className={css.text}>
+                2. A mental hospital in the hands of
+                <br /> patients.
+              </p>
+            </li>
+            <li>
+              <p className={css.text}>3. Scrum. J. Sutherland.</p>
+            </li>
           </ul>
         </div>
 
@@ -25,10 +40,18 @@ const UseFullInfo = () => {
             <br className={css.br} /> resources
           </h3>
           <ul className={css["use-res"]}>
-            <li>1. dou.ua</li>
-            <li>2. Habr</li>
-            <li>3. facebook.com/QA</li>
-            <li>4. goit.ua</li>
+            <li>
+              <p className={css.text}>1. dou.ua</p>
+            </li>
+            <li>
+              <p className={css.text}>2. Habr</p>
+            </li>
+            <li>
+              <p className={css.text}>3. facebook.com/QA</p>
+            </li>
+            <li>
+              <p className={css.text}>4. goit.ua</p>
+            </li>
           </ul>
         </div>
       </div>

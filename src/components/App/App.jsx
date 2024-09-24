@@ -1,4 +1,5 @@
 import css from "./App.module.css";
+import toast, { Toaster } from "react-hot-toast";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { refresh } from "../../redux/auth/operations";
@@ -18,6 +19,8 @@ import TestPage from "../../pages/TestPage/TestPage";
 import ResultsPage from "../../pages/ResultsPage/ResultsPage";
 import UseFullInfoPage from "../../pages/UseFullInfoPage/UsefulInfoPage";
 import ContactsPage from "../../pages/ContactsPage/ContactsPage";
+
+const notify = () => toast("Here is your toast.");
 
 Modal.setAppElement("#root");
 
@@ -68,6 +71,7 @@ const App = () => {
         </Layout>
       )}
       <Footer />
+      <Toaster />
     </>
   );
 };

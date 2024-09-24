@@ -11,6 +11,7 @@
 @media (min-width: 768px) {
   .main {
     width: 768px;
+    margin-bottom: 150px;
   }
 }
 

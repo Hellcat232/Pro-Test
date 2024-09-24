@@ -1,0 +1,21 @@
+.diagram {
+  margin: 20px 0 20px 0;
+  width: 100%;
+  height: 270px;
+}
+
+@media (min-width: 768px) {
+  .diagram {
+    margin: 30px 0 30px 0;
+    width: 100%;
+    height: 270px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .diagram {
+    margin: 30px 0 30px 0;
+    width: 100%;
+    height: 270px;
+  }
+}

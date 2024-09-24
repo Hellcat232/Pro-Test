@@ -8,11 +8,18 @@ export const testSlice = createSlice({
     title: "theory" | "tech",
     results: {},
   },
+  reducers: {
+    resetResults: (state) => {
+      state.results = {}; // Очищаем результаты
+    },
+    resetTest: (state) => {
+      state.test = {}; // Cброс самого теста
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(techTest.pending, (state, action) => {
         state.test = {};
-        // state.theoryTest = {};
       })
       .addCase(techTest.fulfilled, (state, action) => {
         state.test = action.payload;
@@ -20,10 +27,8 @@ export const testSlice = createSlice({
       })
       .addCase(techTest.rejected, (state, action) => {
         state.test = {};
-        // state.theoryTest = {};
       })
       .addCase(theoryTest.pending, (state, action) => {
-        // state.theoryTest = {};
         state.test = {};
       })
       .addCase(theoryTest.fulfilled, (state, action) => {
@@ -31,7 +36,6 @@ export const testSlice = createSlice({
         state.test = action.payload;
       })
       .addCase(theoryTest.rejected, (state, action) => {
-        // state.theoryTest = {};
         state.test = {};
       })
       .addCase(techResults.pending, (state, action) => {
@@ -54,5 +58,7 @@ export const testSlice = createSlice({
       });
   },
 });
+
+export const { resetResults, resetTest } = testSlice.actions;
 
 export const testReducer = testSlice.reducer;

@@ -1,10 +1,13 @@
 import css from "./TestPage.module.css";
+import toast from "react-hot-toast";
 import TestBox from "../../components/TestBox/TestBox";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { techResults, theoryResults } from "../../redux/test/operation";
 import { useNavigate } from "react-router-dom";
 import { selectTechTest, selectTitle } from "../../redux/test/selectors";
+import { resetTest } from "../../redux/test/slice";
+// import undateButtonText from "../../helpers/resizeButton";
 
 const TestPage = () => {
   const navigate = useNavigate();
@@ -13,8 +16,39 @@ const TestPage = () => {
   const title = useSelector(selectTitle);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswer] = useState({});
+  const [prevBtnText, setPrevBtnText] = useState("prev");
+  const [nextBtnText, setNextBtnText] = useState("next");
 
-  console.log(answers, "ANSWER ARRAY");
+  let totalAnswers = Object.keys(answers).length;
+
+  if (totalAnswers === 12) {
+    toast("Click Finish test", {
+      duration: 4000,
+      position: "top-center",
+    });
+  }
+
+  //=========Change button text after resize
+  useEffect(() => {
+    const updateButtonText = () => {
+      if (window.innerWidth > 320) {
+        setPrevBtnText("previous question");
+        setNextBtnText("next question");
+      } else {
+        setPrevBtnText("prev");
+        setNextBtnText("next");
+      }
+    };
+
+    updateButtonText();
+
+    window.addEventListener("resize", updateButtonText);
+
+    return () => {
+      window.removeEventListener("resize", updateButtonText);
+    };
+  }, []);
+  //==========================================
 
   const handleLoadNext = () => {
     setCurrentIndex((prevIndex) =>
@@ -43,9 +77,10 @@ const TestPage = () => {
       })),
     };
 
-    console.log(payload.answers.length);
-
-    if (payload.answers.length < 12) return navigate("/");
+    if (payload.answers.length < 12) {
+      dispatch(resetTest());
+      return navigate("/");
+    }
 
     const techResult = payload;
     const thoeryResult = payload;
@@ -71,7 +106,7 @@ const TestPage = () => {
           {title === "tech" && (
             <b className={css.title}>
               [ QA technical
-              <br /> training]
+              <br /> training_]
             </b>
           )}
           <button type="submit" className={css["finish-btn"]}>
@@ -92,20 +127,24 @@ const TestPage = () => {
           <p>Loading...</p>
         )}
 
-        <button
-          type="button"
-          onClick={handleLoadPrev}
-          disabled={currentIndex === 0}
-        >
-          prev
-        </button>
-        <button
-          type="button"
-          onClick={handleLoadNext}
-          disabled={currentIndex === tech.length - 1}
-        >
-          next
-        </button>
+        <div className={css.btns}>
+          <button
+            className={css["prev-btn"]}
+            type="button"
+            onClick={handleLoadPrev}
+            disabled={currentIndex === 0}
+          >
+            {prevBtnText}
+          </button>
+          <button
+            className={css["next-btn"]}
+            type="button"
+            onClick={handleLoadNext}
+            disabled={currentIndex === tech.length - 1}
+          >
+            {nextBtnText}
+          </button>
+        </div>
       </form>
     </>
   );
