@@ -6,7 +6,7 @@ const Card = () => {
       <picture>
         <source
           media="min-width:768px"
-          srcSet="/src/images/PhotoCard-mob.png 1x, /src/images/PhotoCard-desk.png 1x, /src/images/PhotoCard-tablet.png 1x "
+          srcSet="../../images/PhotoCard-mob.png, /src/images/PhotoCard-desk.png 1x, /src/images/PhotoCard-tablet.png 1x "
         />
         <img
           className={css.img}
