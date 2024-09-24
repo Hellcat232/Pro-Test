@@ -109,7 +109,10 @@ export const authSlice = createSlice({
       })
       .addCase(refresh.rejected, (state, action) => {
         state.isRefreshing = false;
-      });
+      })
+      .addCase(loginFromGoogle.pending, (state, action) => {})
+      .addCase(loginFromGoogle.fulfilled, (state, action) => {})
+      .addCase(loginFromGoogle.rejected, (state, action) => {});
   },
 });
 

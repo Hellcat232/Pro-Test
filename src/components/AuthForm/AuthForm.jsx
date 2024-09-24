@@ -3,7 +3,7 @@ import icons from "../../images/symbol-defs.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { register, login } from "../../redux/auth/operations";
+import { register, login, loginFromGoogle } from "../../redux/auth/operations";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -27,6 +27,10 @@ const AuthForm = () => {
     navigate("/");
   };
 
+  const handleGoogle = () => {
+    dispatch(loginFromGoogle());
+  };
+
   return (
     <form className={css["auth-form"]}>
       <div className={css.description}>
@@ -34,7 +38,7 @@ const AuthForm = () => {
           You can use your Google Account to authorize:
         </p>
 
-        <button className={css["google-btn"]} disabled>
+        <button className={css["google-btn"]} onClick={handleGoogle} disabled>
           <svg width="18" height="18">
             <use href={`${icons}#icon-google-symbol-1`}></use>
           </svg>
