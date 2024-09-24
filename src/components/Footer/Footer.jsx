@@ -1,5 +1,5 @@
 import css from "./Footer.module.css";
-import icons from "../../images/symbol-defs.svg";
+import icons from "../../../public/images/symbol-defs.svg";
 
 const Footer = () => {
   return (

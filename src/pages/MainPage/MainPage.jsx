@@ -1,5 +1,5 @@
 import css from "./MainPage.module.css";
-import icon from "../../images/symbol-defs.svg";
+import icon from "../../../public/images/symbol-defs.svg";
 import { user } from "../../redux/user/operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

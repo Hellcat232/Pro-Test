@@ -3,7 +3,7 @@
   height: 100vh;
   position: fixed;
   top: 70px;
-  background-image: url("/src/images/pic-mob.png");
+  background-image: url("/public/images/pic-mob.png");
   background-size: cover;
   background-position: 100%;
 }
@@ -82,7 +82,7 @@
   .background-image {
     width: 100%;
 
-    background-image: url("/src/images/pic-tablet.png");
+    background-image: url("/public/images/pic-tablet.png");
     background-position: 100%;
   }
 
@@ -127,7 +127,7 @@
 
 @media (min-width: 1280px) {
   .background-image {
-    background-image: url("/src/images/pic-desk.png");
+    background-image: url("/public/images/pic-desk.png");
   }
 
   .lists {

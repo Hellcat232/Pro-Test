@@ -6,12 +6,12 @@ const Card = () => {
       <picture>
         <source
           media="min-width:768px"
-          srcSet="../../images/PhotoCard-mob.png, /src/images/PhotoCard-desk.png 1x, /src/images/PhotoCard-tablet.png 1x "
+          srcSet="/images/PhotoCard-mob.png, /images/PhotoCard-desk.png 1x, /images/PhotoCard-tablet.png 1x "
         />
         <img
           className={css.img}
-          srcSet="/src/images/PhotoCard-mob.png 1x, /src/images/PhotoCard-desk.png 1x, /src/images/PhotoCard-tablet.png 1x"
-          src="/src/images/PhotoCard-tablet.png"
+          srcSet="/images/PhotoCard-mob.png 1x, /images/PhotoCard-desk.png 1x, /images/PhotoCard-tablet.png 1x"
+          src="/images/PhotoCard-tablet.png"
           alt=""
           loading="lazy"
         />

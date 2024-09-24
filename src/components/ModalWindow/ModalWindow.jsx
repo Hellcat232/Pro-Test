@@ -1,6 +1,6 @@
 import css from "./ModalWindow.module.css";
 import Modal from "react-modal";
-import icon from "../../images/symbol-defs.svg";
+import icon from "../../../public/images/symbol-defs.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";

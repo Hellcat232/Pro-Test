@@ -1,3 +1,9 @@
+:root {
+  --font-family: "Montserrat", sans-serif;
+  --second-family: "Montserrat Medium", sans-serif;
+  --third-family: "Montserrat SemiBold", sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }

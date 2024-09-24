@@ -1,5 +1,5 @@
 import css from "./AuthForm.module.css";
-import icons from "../../images/symbol-defs.svg";
+import icons from "../../../public/images/symbol-defs.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

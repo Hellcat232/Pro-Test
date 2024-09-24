@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/operations";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import icon from "../../images/symbol-defs.svg";
+import icon from "../../../public/images/symbol-defs.svg";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectFirstSpell, selectUser } from "../../redux/user/selectors";
 import { Link, useNavigate } from "react-router-dom";

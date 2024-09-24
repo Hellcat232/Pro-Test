@@ -93,7 +93,7 @@ const ResultsPage = () => {
           <p className={css.incorrect}>Total questions - {totalQuestion}</p>
         </div>
         <div className={css["div-cat"]}>
-          <img className={css.cat} src="/src/images/CatWithHeart.png" alt="" />
+          <img className={css.cat} src="/images/CatWithHeart.png" alt="" />
         </div>
         <div className={css["message-div"]}>
           <p className={css["main-message"]}>{mainMessage}</p>
