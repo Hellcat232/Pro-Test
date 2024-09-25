@@ -48,23 +48,19 @@ const Navigation = () => {
   const handleLogout = () => {
     dispatch(logout());
 
-    // signOut(auth)
-    //   .then(() => {
-    //     // Sign-out successful.
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //   });
-
     navigate("/auth");
   };
 
-  const handleContacts = () => {
-    setAuth(true);
-  };
+  // const handleContacts = () => {
+  //   setAuth(true);
+  // };
 
-  const handleLogin = () => {
-    setAuth(false);
+  // const handleLogin = () => {
+  //   setAuth(false);
+  // };
+
+  const handleToggle = () => {
+    setAuth(!isAuth);
   };
 
   return (
@@ -89,14 +85,16 @@ const Navigation = () => {
               </li>
             )}
 
-            <li className={css["contacts"]}>
-              {/* <Link to="/auth"  onClick={handleLogin}>
-                  Login
-                </Link> */}
-
-              <Link to="/contacts" onClick={handleContacts}>
-                Contacts
-              </Link>
+            <li className={css["contacts"]} onClick={handleToggle}>
+              {isAuth ? (
+                !isLogged ? (
+                  <Link to="/auth">Login</Link>
+                ) : (
+                  <Link to="/contacts">Contacts</Link>
+                )
+              ) : (
+                <Link to="/contacts">Contacts</Link>
+              )}
             </li>
 
             <ul className={css["nav-right-side"]}>

@@ -54,6 +54,7 @@ const AuthForm = () => {
           className={css["google-btn"]}
           type="submit"
           onClick={handleGoogle}
+          disabled
         >
           <svg width="18" height="18">
             <use href={`${icons}#icon-google-symbol-1`}></use>
