@@ -88,6 +88,10 @@ export const refresh = createAsyncThunk(
         return thunkAPI.rejectWithValue("User not authorized");
       }
 
+      // if (!sid) {
+      //   return thunkAPI.rejectWithValue("User not authorized");
+      // }
+
       const { data } = await axios.post("/auth/refresh", persistedSessionID, {
         headers: { Authorization: sid.auth.refreshToken },
       });

@@ -1,9 +1,16 @@
 import css from "./AuthForm.module.css";
-import icons from "../../../public/images/symbol-defs.svg";
+import icons from "../../images/symbol-defs.svg";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { register, login, loginFromGoogle } from "../../redux/auth/operations";
+import { register, login } from "../../redux/auth/operations";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -27,8 +34,13 @@ const AuthForm = () => {
     navigate("/");
   };
 
-  const handleGoogle = () => {
-    dispatch(loginFromGoogle());
+  const handleGoogle = async (e) => {
+    try {
+      const provider = await new GoogleAuthProvider();
+      return signInWithPopup(auth, provider);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -38,7 +50,11 @@ const AuthForm = () => {
           You can use your Google Account to authorize:
         </p>
 
-        <button className={css["google-btn"]} onClick={handleGoogle} disabled>
+        <button
+          className={css["google-btn"]}
+          type="submit"
+          onClick={handleGoogle}
+        >
           <svg width="18" height="18">
             <use href={`${icons}#icon-google-symbol-1`}></use>
           </svg>

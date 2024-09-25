@@ -3,9 +3,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { refresh } from "../../redux/auth/operations";
+import { useAuthState } from "react-firebase-hooks/auth";
 import {
   selectIsRefreshing,
   selectIsLoggedIn,
+  selectRefreshToken,
+  selectSid,
 } from "../../redux/auth/selectors";
 import Modal from "react-modal";
 import { useEffect } from "react";
@@ -19,25 +22,35 @@ import TestPage from "../../pages/TestPage/TestPage";
 import ResultsPage from "../../pages/ResultsPage/ResultsPage";
 import UseFullInfoPage from "../../pages/UseFullInfoPage/UsefulInfoPage";
 import ContactsPage from "../../pages/ContactsPage/ContactsPage";
+import { auth } from "../../firebase/firebase";
 
 const notify = () => toast("Here is your toast.");
 
 Modal.setAppElement("#root");
 
 const App = () => {
+  const [user] = useAuthState(auth);
   const dispatch = useDispatch();
   const isLogged = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
+  const refreshToken = useSelector(selectRefreshToken);
+  const sid = useSelector(selectSid);
 
   useEffect(() => {
-    dispatch(refresh());
+    if (refreshToken && sid !== null) {
+      dispatch(refresh());
+    }
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(refresh());
+  // }, [dispatch]);
 
   return (
     <>
       <Navigation />
 
-      {isRefreshing ? (
+      {isRefreshing || user ? (
         <p>Refresh page</p>
       ) : (
         <Layout>

@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/operations";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import icon from "../../../public/images/symbol-defs.svg";
+import icon from "../../images/symbol-defs.svg";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectFirstSpell, selectUser } from "../../redux/user/selectors";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+// import { auth } from "../../firebase/firebase";
+// import { signOut } from "firebase/auth";
 import ModalWindow from "../ModalWindow/ModalWindow";
 
 const Navigation = () => {
@@ -45,6 +47,14 @@ const Navigation = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+
+    // signOut(auth)
+    //   .then(() => {
+    //     // Sign-out successful.
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
 
     navigate("/auth");
   };
