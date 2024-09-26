@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { techTest, theoryTest } from "../../redux/test/operation";
 
-const MainPage = () => {
+export default function MainPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -56,6 +56,4 @@ const MainPage = () => {
       </ul>
     </div>
   );
-};
-
-export default MainPage;
+}

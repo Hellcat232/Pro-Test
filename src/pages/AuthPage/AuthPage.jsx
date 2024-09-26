@@ -1,7 +1,7 @@
 import css from "./AuthPage.module.css";
 import AuthForm from "../../components/AuthForm/AuthForm";
 
-const AuthPage = () => {
+export default function AuthPage() {
   return (
     <>
       <div className={css["title-div"]}>
@@ -19,6 +19,4 @@ const AuthPage = () => {
       <AuthForm />
     </>
   );
-};
-
-export default AuthPage;
+}

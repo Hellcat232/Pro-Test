@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { user } from "../../redux/user/operations";
 
-const ContactsPage = () => {
+export default function ContactsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +26,4 @@ const ContactsPage = () => {
       </div>
     </div>
   );
-};
-
-export default ContactsPage;
+}

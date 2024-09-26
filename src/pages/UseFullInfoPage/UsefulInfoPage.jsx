@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { user } from "../../redux/user/operations";
 
-const UseFullInfo = () => {
+export default function UseFullInfo() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,6 +57,4 @@ const UseFullInfo = () => {
       </div>
     </div>
   );
-};
-
-export default UseFullInfo;
+}

@@ -9,7 +9,7 @@ import { selectTechTest, selectTitle } from "../../redux/test/selectors";
 import { resetTest } from "../../redux/test/slice";
 // import undateButtonText from "../../helpers/resizeButton";
 
-const TestPage = () => {
+export default function TestPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const tech = useSelector(selectTechTest);
@@ -148,6 +148,4 @@ const TestPage = () => {
       </form>
     </>
   );
-};
-
-export default TestPage;
+}

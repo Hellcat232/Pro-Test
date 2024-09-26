@@ -6,7 +6,7 @@ import Diagram from "../../components/Diagram/Diagram";
 import { resetResults, resetTest } from "../../redux/test/slice";
 import { theoryTest, techTest } from "../../redux/test/operation";
 
-const ResultsPage = () => {
+export default function ResultsPage() {
   const title = useSelector(selectTitle);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,20 +33,6 @@ const ResultsPage = () => {
 
     let correctPercentage = (correctAnswer / totalQuestion) * 100;
     let incorrectPercentage = (incorrectAnswer / totalQuestion) * 100;
-
-    // console.log(correctPercentage, incorrectPercentage);
-
-    // if (correctPercentage === 8 || incorrectPercentage === 8) {
-    //   return {
-    //     correctPercentage,
-    //     incorrectPercentage,
-    //   };
-    // } else {
-    //   return {
-    //     correctPercentage: Math.ceil(correctPercentage),
-    //     incorrectPercentage: Math.ceil(incorrectPercentage),
-    //   };
-    // }
 
     correctPercentage.toFixed(2);
     incorrectPercentage.toFixed(2);
@@ -105,6 +91,4 @@ const ResultsPage = () => {
       </div>
     </>
   );
-};
-
-export default ResultsPage;
+}
