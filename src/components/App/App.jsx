@@ -16,12 +16,6 @@ import Layout from "../Layout/Layout";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Footer/Footer";
 import { refresh } from "../../redux/auth/operations";
-// import AuthPage from "../../pages/AuthPage/AuthPage";
-// import MainPage from "../../pages/MainPage/MainPage";
-// import TestPage from "../../pages/TestPage/TestPage";
-// import ResultsPage from "../../pages/ResultsPage/ResultsPage";
-// import UseFullInfoPage from "../../pages/UseFullInfoPage/UsefulInfoPage";
-// import ContactsPage from "../../pages/ContactsPage/ContactsPage";
 import { auth } from "../../firebase/firebase";
 
 const notify = () => toast("Here is your toast.");
