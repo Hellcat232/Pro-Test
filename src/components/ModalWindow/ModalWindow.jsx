@@ -34,7 +34,14 @@ const customStyles = {
   },
 };
 
-const ModalWindow = ({ modalIsOpen, onRequestClose, setOpenModal, logOut }) => {
+const ModalWindow = ({
+  modalIsOpen,
+  onRequestClose,
+  setOpenModal,
+  logOut,
+  isAuth,
+  setAuth,
+}) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
 
@@ -51,6 +58,14 @@ const ModalWindow = ({ modalIsOpen, onRequestClose, setOpenModal, logOut }) => {
   const toContacts = () => {
     navigate("/contacts");
     setOpenModal(false);
+  };
+
+  const toLogin = () => {
+    navigate("/auth");
+    setOpenModal(false);
+  };
+  const handleToggle = () => {
+    setAuth(!isAuth);
   };
 
   const handleLogOut = () => {
@@ -78,9 +93,23 @@ const ModalWindow = ({ modalIsOpen, onRequestClose, setOpenModal, logOut }) => {
               Material
             </button>
           )}
-          <button onClick={toContacts} className={css["modal-buttons"]}>
-            Contacts
-          </button>
+          <div onClick={handleToggle} className={css["but-div"]}>
+            {isAuth ? (
+              !isLoggedIn ? (
+                <button onClick={toLogin} className={css["modal-buttons"]}>
+                  Login
+                </button>
+              ) : (
+                <button onClick={toContacts} className={css["modal-buttons"]}>
+                  Contacts
+                </button>
+              )
+            ) : (
+              <button onClick={toContacts} className={css["modal-buttons"]}>
+                Contacts
+              </button>
+            )}
+          </div>
           {isLoggedIn && (
             <button
               onClick={handleLogOut}

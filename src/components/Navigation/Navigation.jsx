@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import icon from "../../images/symbol-defs.svg";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectFirstSpell, selectUser } from "../../redux/user/selectors";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import { auth } from "../../firebase/firebase";
 // import { signOut } from "firebase/auth";
@@ -52,11 +52,11 @@ const Navigation = () => {
   };
 
   // const handleContacts = () => {
-  //   setAuth(true);
+  //   if (!isAuth) navigate("/auth");
   // };
 
   // const handleLogin = () => {
-  //   setAuth(false);
+  //   if (isAuth) navigate("/contacts");
   // };
 
   const handleToggle = () => {
@@ -146,6 +146,8 @@ const Navigation = () => {
         </nav>
       </header>
       <ModalWindow
+        isAuth={isAuth}
+        setAuth={setAuth}
         modalIsOpen={modalOpen}
         onRequestClose={handleCloseModal}
         setOpenModal={setOpenModal}
